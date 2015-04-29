@@ -24,5 +24,4 @@ function debug(text, type){
 	debug('DOM ready', 'success');
 	var game = document.getElementsByTagName('main')[0];
 	debug(game);
-	
 }()
