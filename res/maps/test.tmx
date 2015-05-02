@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="44" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="wex_dev" tilewidth="32" tileheight="32">
+  <image source="../gfx/tilemap.png" width="2048" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="" value=""/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="name" value="ladder_1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="name" value="button_1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="name" value="tools_ladder1"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="name" value="tools_tglcollide_u"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="name" value="tools_tglcollide_d"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="name" value="tools_tglcollide_l"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="name" value="tools_tglcollide_r"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="name" value="tools_tglcollide_lr"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="name" value="tools_tglcollide_ud"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="name" value="trigger_bigjump"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="name" value="tools_ladder_l"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="name" value="tools_ladder_r"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="base" width="44" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztkkkKwCAMRWvbded57v0v2b+om2CgClYFPzyCJOIjmCThRLgW0Ez0tZvoazeh+GZvDcVXkOp7oq+9CILPoa6++8q48M1B+lbdmPgWoGR6DWhBB3pm5m/fCtRMbwAjmMDMzJj4qv6vypnuUp65HS9gBRvYP75t6qq6T3cpz9yOD3CCC9wab5u6RuzxAKp0A0g=
+  </data>
+ </layer>
+ <layer name="button_1" width="44" height="20">
+  <properties>
+   <property name="action_list" value="toggle_collide_up"/>
+   <property name="align-x" value="16"/>
+   <property name="align-y" value="0"/>
+   <property name="target" value="platform_1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztziEBAAAIA7Ab+lemwh2CLcESAAAacx0A3lskaAAG
+  </data>
+ </layer>
+ <layer name="platform_1" width="44" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIA7B9+HeMgRmAtEkTAAAumxL4aQGWeAAk
+  </data>
+ </layer>
+ <layer name="trigger_bigjump" width="44" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJAAAIBLFfwP3XtbcXEZLmJrgEAP6rUWBHxWdwqQEc+wA1
+  </data>
+ </layer>
+ <layer name="collision" width="44" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlG0KACAIQzuM9z9jf0PMpiQ1cBBBfuxV1Bg8ktcAQTVvrZq3Viy8oubf1by1YuJlY2Xg1HrFnPXN1Hl3I2rc9M3WnXiR3lFfy9PqofNOPAjv+s4R7si+b/Oia0hszbE4vfPPxnd5rP+XpwlTWAqx
+  </data>
+ </layer>
+ <layer name="ladders" width="44" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJADAIAEFn0f13TJMBLAQR7ppvPwIAgAn1m6sXfX7hngcMhQDQ
+  </data>
+ </layer>
+</map>
