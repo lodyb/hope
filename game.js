@@ -20,6 +20,7 @@ var Game = {
 		this.input = Object.create(Input);
 		this.input.init(this, document, [
 			{name: 'w', code: 87, preventDefault: true, callback: null},
+			{name: 'down', code: [40, 83], preventDefault: true, callback: null},
 		]);
 		debug(this.input);
 		this.player = Object.create(Player);
@@ -34,6 +35,9 @@ var Game = {
 		this.tick_count++;
 		if (this.input.keys.w) {
 			debug('w key pressed down');
+		}
+		if (this.input.keys.down) {
+			debug('down key (s or downarrow) pressed down');
 		}
 	}
 

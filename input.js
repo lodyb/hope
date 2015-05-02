@@ -39,10 +39,27 @@ var Input = {
 				continue;
 			}
 			this.keys[keys[i].name] = false;
-			this.key_codes[keys[i].code] = {
-				name: keys[i].name,
-				preventDefault: keys[i].preventDefault,
-				callback: keys[i].callback,
+			if (typeof(keys[i].code) == 'number') {
+				/**
+				 * single key code for single key data
+				 */
+				this.key_codes[keys[i].code] = {
+					name: keys[i].name,
+					preventDefault: keys[i].preventDefault,
+					callback: keys[i].callback,
+				}
+			}
+			else {
+				/**
+				 * list of key codes for single key data
+				 */
+				for (var n = 0; n < keys[i].code.length; n++) {
+					this.key_codes[keys[i].code[n]] = {
+						name: keys[i].name,
+						preventDefault: keys[i].preventDefault,
+						callback: keys[i].callback,
+					}
+				}
 			}
 		}
 		var that = this;
