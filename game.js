@@ -15,29 +15,48 @@ var Game = {
 	tick_interval: null,
 
 	init: function() {
+		var that = this;
 		this.element = document.getElementsByTagName('main')[0];
 		debug(this);
 		this.input = Object.create(Input);
+
+		/**
+		 * configure input
+		 */
 		this.input.init(this, document, [
-			{name: 'w', code: 87, preventDefault: true, callback: null},
-			{name: 'down', code: [40, 83], preventDefault: true, callback: null},
+			{name: 'up', code: [38, 87],
+				preventDefault: true, callback: null},
+			{name: 'down', code: [40, 83],
+				preventDefault: true, callback: null},
+			{name: 'left', code: [37, 65],
+				preventDefault: true, callback: null},
+			{name: 'right', code: [39, 68],
+				preventDefault: true, callback: null},
 		]);
 		debug(this.input);
+
 		this.player = Object.create(Player);
 		this.player.init(this);
 		debug(this.player);
-		var that = this;
-		this.tick_interval = setInterval(function() { that.tick(); }, 1000/10);
+		this.tick_interval = setInterval(function() {
+			that.tick();
+		}, 1000/10);
 	},
 
 	tick: function() {
 		// console.log(this.tick_count);
 		this.tick_count++;
-		if (this.input.keys.w) {
-			debug('w key pressed down');
+		if (this.input.keys.right) {
+			this.player.set_pos(this.player.x + 4, this.player.y);
+		}
+		if (this.input.keys.left) {
+			this.player.set_pos(this.player.x - 4, this.player.y);
+		}
+		if (this.input.keys.up) {
+			this.player.set_pos(this.player.x, this.player.y - 4);
 		}
 		if (this.input.keys.down) {
-			debug('down key (s or downarrow) pressed down');
+			this.player.set_pos(this.player.x, this.player.y + 4);
 		}
 	}
 
