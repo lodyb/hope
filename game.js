@@ -18,7 +18,9 @@ var Game = {
 		this.element = document.getElementsByTagName('main')[0];
 		debug(this);
 		this.input = Object.create(Input);
-		this.input.init(this, document);
+		this.input.init(this, document, [
+			{name: 'w', code: 87, preventDefault: true, callback: null},
+		]);
 		debug(this.input);
 		this.player = Object.create(Player);
 		this.player.init(this);
@@ -30,6 +32,9 @@ var Game = {
 	tick: function() {
 		// console.log(this.tick_count);
 		this.tick_count++;
+		if (this.input.keys.w) {
+			debug('w key pressed down');
+		}
 	}
 
 };
