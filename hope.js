@@ -20,6 +20,14 @@ var HopeGame = {
 		this.map = null;
 		this.map_base = null;
 		this.map_collide = null;
+
+		/**
+		 * extra dom events
+	 	 */
+		window.addEventListener('resize', function(e) {
+			try_resize_game();
+		});
+		try_resize_game();
 	},
 
 	/**
@@ -77,6 +85,33 @@ var HopeGame = {
 			this.map_collide);
 		this.player.update();
 	},
+};
+
+/**
+ * helper function to resize game based on window width/height
+ * will only resize when necessary
+ */
+var try_resize_game = function() {
+	debug(game.width);
+	debug(game.height);
+	debug(window.innerWidth);
+	debug(window.innerHeight);
+	if (window.innerWidth < 1280 || window.innerHeight <= 720) {
+		if (game.width != 640 && game.height != 320) {
+			debug('resize 640x320');
+		}
+	}
+	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
+		if (game.width != 1280 && game.height != 720) {
+			debug('resize 1280x720');
+		}
+	}
+	else if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
+		if (game.width != 1920 && game.width != 1080) {
+			debug('resize 1920x1080');
+		}
+	}
+	// game.stage.smoothed = false;
 };
 
 /**
