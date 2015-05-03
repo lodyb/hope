@@ -15,33 +15,11 @@ html, body {
 	background:#336699;
 }
 
-@media screen and (max-aspect-ratio:16/9) {
-	main{
-		background:#222;
-		background-size:cover;
-		width:100%;
-		padding-bottom:56.25%;
-	}
-	.wrap {
-		position:relative;
-		top:50%;
-		transform:translateY(-50%);
-		max-height:100%;
-	}
-}
-@media screen and (min-aspect-ratio:16/9) {
-	main{
-		background:#222;
-		background-size:cover;
-		position:relative;
-		height:100vh;
-		width:177.25vh;
-		margin:0 auto;
-		vertical-align:top;
-	}
-	.wrap {
-		position:absolute;
-		width:100%;
-		height:100%;
-	}
+#main{
+	margin:0 auto;
+	width:640px;
+	position:relative;
+	top:50%;
+	transform:translateY(-50%);
+	max-height:100%;
 }
