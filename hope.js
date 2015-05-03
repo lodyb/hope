@@ -89,7 +89,8 @@ window.onload = function() {
 	 * configure input
 	 */
 	input = Object.create(Input);
-	input.init(this, document, [
+	input.init(document);
+	input.bind([
 		{name: 'up', code: [38, 87],
 			preventDefault: true, callback: null},
 		{name: 'down', code: [40, 83],
@@ -99,7 +100,6 @@ window.onload = function() {
 		{name: 'right', code: [39, 68],
 			preventDefault: true, callback: null},
 	]);
-
 
 	/**
 	 * init phaser

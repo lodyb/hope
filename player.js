@@ -18,7 +18,6 @@ var Player = {
 		this.y = 0;
 		this.sprite = game.add.sprite(this.x, this.y,
 			'spritesheets/player_dev');
-		debug(this.sprite);
 		this.sprite.anchor.setTo(0.5, 1);
 
 		/**
@@ -43,6 +42,36 @@ var Player = {
 		this.sprite.input.enableDrag(false, true);
 
 		this.sprite.animations.play('spawn');
+
+		/**
+		 * configure input
+		 */
+		var that = this;
+		input.bind([
+			{
+				name: 'jump',
+				code: 32,
+				preventDefault: true,
+				callback: function(jump_keydown) {
+					that.jump(jump_keydown);
+				},
+			},
+		]);
+	},
+
+	/**
+	 * process jump input
+	 */
+	jump: function(jump_keydown) {
+		if (!jump_keydown) return;
+		if (this.sprite.body.blocked.down) {
+			this.sprite.animations.play('jump');
+			this.sprite.body.velocity.y = -340;
+		}
+		else {
+			this.sprite.animations.play('float');
+			this.sprite.body.velocity.y = 64;
+		}
 	},
 
 	/**
@@ -50,7 +79,6 @@ var Player = {
 	 */
 	update: function() {
 		
-		debug('update');
 		/**
 		 * debug only
 		 */

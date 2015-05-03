@@ -6,7 +6,6 @@
 var Input = {
 
 	element: null,
-	parent: null,
 
 	/**
 	 * key state - true = pressed, false = unpressed
@@ -23,18 +22,33 @@ var Input = {
 	 * keys: [{name: 'name', code: n,
 	 * 		preventDefault: true, callback: null}, ...]
 	 */
-	init: function(parent, element, keys) {
-		this.parent = parent;
+	init: function(element) {
 		this.element = element;
+
+		var that = this;
+		this.element.addEventListener('keydown', function(e) {
+			that.on_keydown(e);
+		});
+		this.element.addEventListener('keyup', function(e) {
+			that.on_keyup(e);
+		});
+	},
+
+	/**
+	 * add new listen key data
+	 * keys: [{name: 'name', code: n,
+	 * 		preventDefault: true, callback: null}, ...]
+	 */
+	bind: function(keys) {
 		if ((typeof(keys.length) == 'undefined') || (keys.length <= 0))
-			debug('missing parameters in Input.init(.., .., keys)',
+			debug('missing parameters in Input.bind(keys)',
 				'warning');
 		for (var i = 0; i < keys.length; i++) {
 			if ((typeof(keys[i].name) == 'undefined') ||
 				(typeof(keys[i].code) == 'undefined') ||
 				(typeof(keys[i].preventDefault) == 'undefined') ||
 				(typeof(keys[i].callback) == 'undefined')) {
-				debug('missing parameter in Input.init(.., .., keys)',
+				debug('missing parameter in Input.bind(keys)',
 					'warning');
 				continue;
 			}
@@ -62,13 +76,6 @@ var Input = {
 				}
 			}
 		}
-		var that = this;
-		this.element.addEventListener('keydown', function(e) {
-			that.on_keydown(e);
-		});
-		this.element.addEventListener('keyup', function(e) {
-			that.on_keyup(e);
-		});
 	},
 
 	on_keydown: function(e) {
@@ -83,7 +90,6 @@ var Input = {
 			if (!this.keys[key.name] && !e.repeat) {
 				this.keys[key.name] = true;
 				if (key.callback) key.callback(true);
-				debug(e);
 			}
 		};
 	},
@@ -98,7 +104,6 @@ var Input = {
 			}
 			this.keys[key.name] = false;
 			if (key.callback) key.callback(false);
-			debug(e);
 		}
 	},
 
