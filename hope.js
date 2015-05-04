@@ -27,7 +27,7 @@ var HopeGame = {
 		window.addEventListener('resize', function(e) {
 			try_resize_game();
 		});
-		try_resize_game();
+		try_resize_game(); //resize_game(1920, 1080);
 	},
 
 	/**
@@ -91,17 +91,25 @@ var HopeGame = {
  * helper function to resize game
  */
 var resize_game = function(x, y) {
+	//game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+	//game.scale.setSize();
+	//game.scale.refresh();
+
+	var elem = document.getElementById('main');
+	elem.style.width = x.toString() + 'px';
+	elem.style.height = y.toString() + 'px';
+
 	debug('resized game to ' + x.toString() + 'x' + y.toString());
 	game.stage.smoothed = false;
-	game.width = x;
-	game.height = y;
+	//game.width = x;
+	//game.height = y;
 	game.canvas.width = x;
-	game.canvas.height = y;
-	game.world.setBounds(0, 0, x, y);
-	game.scale.width = x;
-	game.scale.height = y;
-	game.camera.setSize(x, y);
-	game.camera.setBoundsToWorld();
+	game.canvas.height = y;/*
+	//game.world.setBounds(0, 0, x, y);
+	//game.scale.width = x;
+	//game.scale.height = y;
+	//game.camera.setSize(x, y);
+	//game.camera.setBoundsToWorld();
 	if (game.debug.sprite) {
 		game.stage.removeChild(game.debug.sprite);
 		game.debug.sprite = null;
@@ -117,10 +125,17 @@ var resize_game = function(x, y) {
 		game.debug.context = null;
 		game.debug.canvas = null;
 		game.debug.boot();
-	}
-	game.renderer.resize(x, y);
-	game.scale.setSize();
-	game.scale.refresh();
+	}*/
+	//game.renderer.resize(x, y);
+	//game.scale.setSize();
+	//game.scale.refresh();*/
+	//game.scale.setGameSize(x, y);
+	//scale_x = Math.round(x / 640);
+	//scale_y = Math.round(y / 360);
+	//game.stage.scale.set(scale_x, scale_y);
+	//game.world._container.scale.x = scale_x;
+	//game.world._container.scale.y = scale_y;
+	//game.world._container.updateTransform();
 }
 
 /**
@@ -129,8 +144,8 @@ var resize_game = function(x, y) {
  */
 var try_resize_game = function() {
 	if (window.innerWidth < 1280 || window.innerHeight <= 720) {
-		if (game.width != 640 && game.height != 320) {
-			resize_game(640, 320);
+		if (game.width != 640 && game.height != 360) {
+			resize_game(640, 360);
 		}
 	}
 	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
