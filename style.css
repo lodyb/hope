@@ -18,8 +18,22 @@ html, body {
 #main{
 	margin:0 auto;
 	width:640px;
+	height:360px;
 	position:relative;
 	top:50%;
 	transform:translateY(-50%);
 	max-height:100%;
+}
+canvas {
+  image-rendering: optimizeSpeed;             /* Older versions of FF          */
+  image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+  image-rendering: -webkit-optimize-contrast; /* Safari                        */
+  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated;                 /* Awesome future-browsers       */
+  -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100% !important;
+    height: 100% !important;
 }
