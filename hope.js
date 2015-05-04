@@ -27,7 +27,7 @@ var HopeGame = {
 		window.addEventListener('resize', function(e) {
 			try_resize_game();
 		});
-		try_resize_game(); //resize_game(1920, 1080);
+		try_resize_game();
 	},
 
 	/**
@@ -91,51 +91,15 @@ var HopeGame = {
  * helper function to resize game
  */
 var resize_game = function(x, y) {
-	//game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
-	//game.scale.setSize();
-	//game.scale.refresh();
-
+	game.stage.smoothed = false;
+	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var elem = document.getElementById('main');
 	elem.style.width = x.toString() + 'px';
 	elem.style.height = y.toString() + 'px';
+	game.scale.setSize();
+	game.scale.refresh();
 
 	debug('resized game to ' + x.toString() + 'x' + y.toString());
-	game.stage.smoothed = false;
-	//game.width = x;
-	//game.height = y;
-	// game.canvas.width = x;
-	// game.canvas.height = y;
-	//game.world.setBounds(0, 0, x, y);
-	//game.scale.width = x;
-	//game.scale.height = y;
-	//game.camera.setSize(x, y);
-	//game.camera.setBoundsToWorld();
-	// if (game.debug.sprite) {
-	// 	game.stage.removeChild(game.debug.sprite);
-	// 	game.debug.sprite = null;
-	// 	game.debug.textureFrame = null;
-	// 	if (game.debug.texture) {
-	// 		game.debug.texture.destroy();
-	// 	}
-	// 	game.debug.texture = null;
-	// 	if (game.debug.baseTexture) {
-	// 		game.debug.baseTexture.destroy();
-	// 	}
-	// 	game.debug.baseTexture = null;
-	// 	game.debug.context = null;
-	// 	game.debug.canvas = null;
-	// 	game.debug.boot();
-	// }
-	//game.renderer.resize(x, y);
-	//game.scale.setSize();
-	//game.scale.refresh();*/
-	//game.scale.setGameSize(x, y);
-	//scale_x = Math.round(x / 640);
-	//scale_y = Math.round(y / 360);
-	//game.stage.scale.set(scale_x, scale_y);
-	//game.world._container.scale.x = scale_x;
-	//game.world._container.scale.y = scale_y;
-	//game.world._container.updateTransform();
 }
 
 /**
@@ -143,17 +107,20 @@ var resize_game = function(x, y) {
  * will only resize when necessary
  */
 var try_resize_game = function() {
-	if (window.innerWidth < 1280 || window.innerHeight <= 720) {
+	if (window.innerWidth < 1280 || window.innerHeight < 720) {
+		debug('< 1280x720 resize if not already small!');
 		if (game.width != 640 && game.height != 360) {
 			resize_game(640, 360);
 		}
 	}
-	else if (window.innerWidth < 1910 || window.innerHeight < 1070) {
+	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
+		debug('< 1920x1080 resize if not already medium!');
 		if (game.width != 1280 && game.height != 720) {
 			resize_game(1280, 720);
 		}
 	}
-	else if (window.innerWidth >= 1910 && window.innerHeight >= 1070) {
+	else if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
+		debug('>= 1920x1080 resize if not already big!');
 		if (game.width != 1920 && game.width != 1080) {
 			resize_game(1920, 1080);
 		}
