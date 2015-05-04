@@ -103,29 +103,29 @@ var resize_game = function(x, y) {
 	game.stage.smoothed = false;
 	//game.width = x;
 	//game.height = y;
-	game.canvas.width = x;
-	game.canvas.height = y;/*
+	// game.canvas.width = x;
+	// game.canvas.height = y;
 	//game.world.setBounds(0, 0, x, y);
 	//game.scale.width = x;
 	//game.scale.height = y;
 	//game.camera.setSize(x, y);
 	//game.camera.setBoundsToWorld();
-	if (game.debug.sprite) {
-		game.stage.removeChild(game.debug.sprite);
-		game.debug.sprite = null;
-		game.debug.textureFrame = null;
-		if (game.debug.texture) {
-			game.debug.texture.destroy();
-		}
-		game.debug.texture = null;
-		if (game.debug.baseTexture) {
-			game.debug.baseTexture.destroy();
-		}
-		game.debug.baseTexture = null;
-		game.debug.context = null;
-		game.debug.canvas = null;
-		game.debug.boot();
-	}*/
+	// if (game.debug.sprite) {
+	// 	game.stage.removeChild(game.debug.sprite);
+	// 	game.debug.sprite = null;
+	// 	game.debug.textureFrame = null;
+	// 	if (game.debug.texture) {
+	// 		game.debug.texture.destroy();
+	// 	}
+	// 	game.debug.texture = null;
+	// 	if (game.debug.baseTexture) {
+	// 		game.debug.baseTexture.destroy();
+	// 	}
+	// 	game.debug.baseTexture = null;
+	// 	game.debug.context = null;
+	// 	game.debug.canvas = null;
+	// 	game.debug.boot();
+	// }
 	//game.renderer.resize(x, y);
 	//game.scale.setSize();
 	//game.scale.refresh();*/
@@ -148,14 +148,14 @@ var try_resize_game = function() {
 			resize_game(640, 360);
 		}
 	}
-	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
+	else if (window.innerWidth < 1910 || window.innerHeight < 1070) {
 		if (game.width != 1280 && game.height != 720) {
-			// resize_game(1280, 720);
+			resize_game(1280, 720);
 		}
 	}
-	else if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
+	else if (window.innerWidth >= 1910 && window.innerHeight >= 1070) {
 		if (game.width != 1920 && game.width != 1080) {
-			// resize_game(1280, 720);
+			resize_game(1920, 1080);
 		}
 	}
 };
