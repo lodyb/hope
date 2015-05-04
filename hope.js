@@ -150,12 +150,12 @@ var try_resize_game = function() {
 	}
 	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
 		if (game.width != 1280 && game.height != 720) {
-			resize_game(1280, 720);
+			// resize_game(1280, 720);
 		}
 	}
 	else if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
 		if (game.width != 1920 && game.width != 1080) {
-			resize_game(1280, 720);
+			// resize_game(1280, 720);
 		}
 	}
 };
