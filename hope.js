@@ -119,12 +119,12 @@ var try_resize_game = function() {
 			resize_game(640, 360);
 		}
 	}
-	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
+	else if (window.innerWidth < 1918 || window.innerHeight < 1078) {
 		if (game_x != 1280 && game_y != 720) {
 			resize_game(1280, 720);
 		}
 	}
-	else if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
+	else if (window.innerWidth >= 1918 && window.innerHeight >= 1078) {
 		if (game_x != 1920 && game_y != 1080) {
 			resize_game(1920, 1080);
 		}
