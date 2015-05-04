@@ -89,8 +89,12 @@ var HopeGame = {
 
 /**
  * helper function to resize game
+ * scales game up accordingly
  */
+var game_x = null; var game_y = null;
+
 var resize_game = function(x, y) {
+	game_x = x; game_y = y;
 	game.stage.smoothed = false;
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	var elem = document.getElementById('main');
@@ -98,8 +102,6 @@ var resize_game = function(x, y) {
 	elem.style.height = y.toString() + 'px';
 	game.scale.setSize();
 	game.scale.refresh();
-
-	debug('resized game to ' + x.toString() + 'x' + y.toString());
 }
 
 /**
@@ -107,21 +109,23 @@ var resize_game = function(x, y) {
  * will only resize when necessary
  */
 var try_resize_game = function() {
+	if (!game_x) {
+		game_x = game.width;
+		game_y = game.width;
+	}
+	var elem = document.getElementById('main');
 	if (window.innerWidth < 1280 || window.innerHeight < 720) {
-		debug('< 1280x720 resize if not already small!');
-		if (game.width != 640 && game.height != 360) {
+		if (game_x != 640 && game_y != 360) {
 			resize_game(640, 360);
 		}
 	}
 	else if (window.innerWidth < 1920 || window.innerHeight < 1080) {
-		debug('< 1920x1080 resize if not already medium!');
-		if (game.width != 1280 && game.height != 720) {
+		if (game_x != 1280 && game_y != 720) {
 			resize_game(1280, 720);
 		}
 	}
 	else if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
-		debug('>= 1920x1080 resize if not already big!');
-		if (game.width != 1920 && game.width != 1080) {
+		if (game_x != 1920 && game_y != 1080) {
 			resize_game(1920, 1080);
 		}
 	}
